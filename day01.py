@@ -14,32 +14,32 @@ with open("day01.txt", 'r') as FH:
                     temp += char
                     break
         res1 += int(temp)        
-print(res1)
+    print(res1)
 
 ### Aufgabe2:
-with open("day01.txt", 'r') as FH:
+    FH.seek(0)
     for line in FH:
-        temp_index = 99
-        temp_high = 0
-        res_low = res_high = ""
+        temp_low    = 99
+        temp_high   = 0
+        res_low     = res_high = ""
+        results     = []
 
-        for substring in num:
-            try:
-                index = line.index(substring)
-                last_index = line.rfind(substring)
+        for cur_num in num:
+            index       = line.find(cur_num)
+            last_index  = line.rfind(cur_num)
 
-                if(index <= temp_index):                    
-                    temp_index = index
-                    res_low = substring
-                if(last_index >= temp_high):                    
-                    res_high = substring
-                    temp_high = last_index                            
-            except ValueError: pass
-                
-        results = []
+            if(index <= temp_low and index >= 0):                    
+                temp_low = index
+                res_low = cur_num
+
+            if(last_index >= temp_high):                    
+                temp_high = last_index
+                res_high = cur_num                
+                  
         for res in [res_low, res_high]:
                 position = num.index(res)
                 if position >= 9: position -= 9
                 results.append(str(position + 1))
-        res2 += int(''.join(results))    
+
+        res2 += int(''.join(results))     
 print(res2)
