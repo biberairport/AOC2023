@@ -2,6 +2,7 @@ result = result2 = 0
 
 string_numbers =["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+### Aufgabe1:
 with open("day01.txt", 'r') as filehandle:
     for line in filehandle:
         if(line != "\n"):
@@ -17,6 +18,7 @@ with open("day01.txt", 'r') as filehandle:
 print(result)
 
 
+### Aufgabe2:
 with open("day01.txt", 'r') as filehandle:
     for line in filehandle:
         temp_index = 99
@@ -35,7 +37,7 @@ with open("day01.txt", 'r') as filehandle:
                     res_high = substring
                     temp_high = last_index                            
             except ValueError: pass
-
+                
         results = []
         for res in [res_low, res_high]:
             try:
@@ -44,8 +46,5 @@ with open("day01.txt", 'r') as filehandle:
                     position -= 9
                 results.append(str(position + 1))
             except ValueError: pass
-
-        result2 += int(''.join(results))    
-        
+        result2 += int(''.join(results))            
 print(result2)
-
