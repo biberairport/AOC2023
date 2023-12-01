@@ -1,10 +1,9 @@
-result = result2 = 0
-
-string_numbers =["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+res1 = res2 = 0
+num =["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 ### Aufgabe1:
-with open("day01.txt", 'r') as filehandle:
-    for line in filehandle:
+with open("day01.txt", 'r') as FH:
+    for line in FH:
         if(line != "\n"):
             for char in line:
                 if char.isdigit():
@@ -14,18 +13,17 @@ with open("day01.txt", 'r') as filehandle:
                 if char.isdigit():                    
                     temp += char
                     break
-        result += int(temp)        
-print(result)
-
+        res1 += int(temp)        
+print(res1)
 
 ### Aufgabe2:
-with open("day01.txt", 'r') as filehandle:
-    for line in filehandle:
+with open("day01.txt", 'r') as FH:
+    for line in FH:
         temp_index = 99
         temp_high = 0
-        res_low = res_high = ""        
+        res_low = res_high = ""
 
-        for substring in string_numbers:
+        for substring in num:
             try:
                 index = line.index(substring)
                 last_index = line.rfind(substring)
@@ -40,11 +38,8 @@ with open("day01.txt", 'r') as filehandle:
                 
         results = []
         for res in [res_low, res_high]:
-            try:
-                position = string_numbers.index(res)
-                if position >= 9:
-                    position -= 9
+                position = num.index(res)
+                if position >= 9: position -= 9
                 results.append(str(position + 1))
-            except ValueError: pass
-        result2 += int(''.join(results))            
-print(result2)
+        res2 += int(''.join(results))    
+print(res2)
